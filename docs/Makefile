@@ -1,19 +1,20 @@
 PROJECT := report
+SRC_DIR := src
 BUILD_DIR := build
 
-build: prepare compile_pdf copy_back clean
+build: prepare compile_pdf create_bibliography compile_pdf copy_back clean
 
 prepare:
-	mkdir -p ${BUILD_DIR}
+	mkdir -p ${SRC_DIR}/${BUILD_DIR}
 
 compile_pdf:
-	pdflatex -output-directory=${BUILD_DIR} ${PROJECT}.tex
+	cd ${SRC_DIR} && pdflatex -output-directory=${BUILD_DIR} ${PROJECT}.tex
 
 create_bibliography:
-	bibtex ${BUILD_DIR}/${PROJECT}.aux
+	cd ${SRC_DIR} && bibtex ${BUILD_DIR}/${PROJECT}.aux
 
 copy_back:
-	cp ${BUILD_DIR}/${PROJECT}.pdf .
+	cp ${SRC_DIR}/${BUILD_DIR}/${PROJECT}.pdf .
 
 clean:
-	rm -rf ${BUILD_DIR}
+	rm -rf ${SRC_DIR}/${BUILD_DIR}

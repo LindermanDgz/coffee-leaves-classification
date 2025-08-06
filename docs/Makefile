@@ -2,7 +2,14 @@ PROJECT := CoffeeLeavesClassification
 SRC_DIR := src
 BUILD_DIR := build
 
-build: prepare compile_pdf create_bibliography compile_pdf copy_back clean
+build:
+	$(MAKE) prepare
+	$(MAKE) compile_pdf
+	$(MAKE) create_bibliography
+	$(MAKE) compile_pdf
+	$(MAKE) compile_pdf
+	$(MAKE) copy_back
+	$(MAKE) clean
 
 prepare:
 	mkdir -p ${SRC_DIR}/${BUILD_DIR}

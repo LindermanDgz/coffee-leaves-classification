@@ -254,3 +254,6 @@ __marimo__/
 .bak 
 .mtc
 build/
+
+# LaTeX Minted Package
+_minted-*/

@@ -1,42 +1,106 @@
 \chapter{Procedimiento}
+El código fuente está disponible en la plataforma de GitHub \cite{LindermanDgz}.
 
 \section{Carga de los datos del dataset}
-
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/load_dataset.py}
-\caption{Lectura de las anotaciones del dataset}
+\caption{Cargar las anotaciones del dataset}
 \label{code:load_dataset}
 \end{listing}
 
 \subsection{La clase CoffeeLeaf}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/coffee_leaf.py}
+\caption{La clase CoffeeLeaf}
+\label{code:coffee_leaf}
+\end{listing}
 
 \section{Procesado de la imagen}
 
 \subsection{Conversión de BGR a RGB}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/bgr_to_rgb.py}
+\caption{Convertir imgen BGR a RGB}
+\label{code:bgr_to_rgb}
+\end{listing}
 
 \subsection{Creación de las regiones de interés}
 
 \subsection{Creación de la máscara}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/mask.py}
+\caption{Crear máscara}
+\label{code:mask}
+\end{listing}
 
 \subsection{Enmascaramiento de las regiones de interés}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/masked_roi.py}
+\caption{Enmascarar las regiones de interés}
+\label{code:masked_roi}
+\end{listing}
 
 \subsection{Histograma de las regiones de interés}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/histogram.py}
+\caption{Cálcular histograma de la región de interés}
+\label{code:histogram}
+\end{listing}
 
 \subsection{Segmentación de la imagen}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/segmentation.py}
+\caption{Segmentar la región de interés}
+\label{code:segmentation}
+\end{listing}
 
-\subsection{Categorización}
+\subsection{Clasificación de la hoja}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/categorize.py}
+\caption{Clasificar hoja de café}
+\label{code:categorize}
+\end{listing}
 
 \section{Presentación de los datos}
 
 \subsection{Resumen}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/show_summary.py}
+\caption{Mostrar resumen de la clasificación}
+\label{code:show_summary}
+\end{listing}
 
 \subsection{Imagen original}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/show_original_image.py}
+\caption{Mostrar imagen original}
+\label{code:show_original_image}
+\end{listing}
 
 \subsection{Máscara}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/show_mask.py}
+\caption{Mostrar máscara}
+\label{code:show_mask}
+\end{listing}
 
 \subsection{Regiones de interés}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/show_roi.py}
+\caption{Mostrar regiones de interés}
+\label{code:show_roi}
+\end{listing}
 
 \subsection{Imagen segmentada}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/show_segmentation.py}
+\caption{Mostrar segmentación de la imagen}
+\label{code:show_segmentation}
+\end{listing}
 
 \subsection{Histograma}
-\cite{LindermanDgz}
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/show_histogram.py}
+\caption{Mostrar histograma de la región de interés}
+\label{code:show_histogram}
+\end{listing}

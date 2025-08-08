@@ -9,4 +9,5 @@ def _binarize(self):
                                            GREEN_LIMIT_ABOVE,
                                            179,
                                            cv.THRESH_BINARY_INV)
-    self.binary = cv.bitwise_and(segments_below_green, segments_above_green)
+    self.binary = cv.bitwise_and(segments_below_green,
+                                 segments_above_green)

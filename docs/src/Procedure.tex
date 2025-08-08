@@ -1,12 +1,16 @@
 \chapter{Procedimiento}
-El código fuente está disponible en la plataforma de GitHub \cite{LindermanDgz}.
+A continuación se describen los procesos del algoritmo que permiten solucionar el problema especificado. El código fuente está disponible de manera digital en la plataforma de GitHub \cite{LindermanDgz}.
 
 \section{Carga de los datos del dataset}
+Se comienza por leer los datos que conforman el dataset y que contiene información que ha sido etiquetada de manera manual por los autores del mismo.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/load_dataset.py}
 \caption{Cargar las anotaciones del dataset}
 \label{code:load_dataset}
 \end{listing}
+
+La variable \texttt{annotations} contiene la siguiente información:
 
 \subsection{La clase CoffeeLeaf}
 \begin{listing}[!ht]

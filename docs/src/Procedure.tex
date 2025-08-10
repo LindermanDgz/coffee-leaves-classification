@@ -1,8 +1,8 @@
 \chapter{Procedimiento}
 A continuación se describen los procesos del algoritmo que permiten solucionar el problema especificado. El código fuente está disponible de manera digital en la plataforma de GitHub \cite{LindermanDgz}.
 
-\section{Carga de los datos del dataset}
-Se comienza por leer los datos que conforman el dataset y que contiene información que ha sido etiquetada de manera manual por los autores del mismo.
+\section{Lectura del dataset}
+Se comienza leyendo el dataset que contiene información que ha sido etiquetada de manera manual por los autores del mismo. Este proceso se describe en \Cref{code:load_dataset}.
 
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/load_dataset.py}
@@ -10,13 +10,42 @@ Se comienza por leer los datos que conforman el dataset y que contiene informaci
 \label{code:load_dataset}
 \end{listing}
 
-La variable \texttt{annotations} contiene la siguiente información:
+Utilizando la biblioteca \texttt{json} de Python leémos el archivo \texttt{RoCoLE.json} (originalmente \texttt{Annotations/RoCoLE-json.json}). La variable \texttt{annotations} contiene la información necesaria para contruir nuestro conjunto de datos de prueba (véase \Cref{table:required_annotations}).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|}
+\hline 
+\textbf{Anotación} & \textbf{Descripción} \\ 
+\hline 
+ID & Identificador de la hoja \\ 
+\hline 
+Label.Leaf.0.state & Estado de la hoja como saludable o infectada \\ 
+\hline 
+Label.classification & Clasificación de la hoja o nivel de afectación \\ 
+\hline 
+Label.Leaf.0.geometry & Puntos (x,y) que determinan el contorno de la hoja \\ 
+\hline 
+\end{tabular}
+\caption{Anotaciones del dataset}
+\label{table:required_annotations}
+\end{table}
 
 \subsection{La clase CoffeeLeaf}
+A continuación creamos una clase llamada \texttt{CoffeeLeaf} la cual se encarga de contener los datos proporcionados en las anotaciones y que representa a una hoja de café. Los atributos de esta clase pueden observarse en \Cref{code:coffee_leaf}.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/coffee_leaf.py}
 \caption{La clase CoffeeLeaf}
 \label{code:coffee_leaf}
+\end{listing}
+
+\subsection{Lista de objetos CoffeeLeaf}
+
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/coffee_leaves.py}
+\caption{Lista de objetos CoffeLeaf}
+\label{code:coffee_leaves}
 \end{listing}
 
 \section{Procesado de la imagen}

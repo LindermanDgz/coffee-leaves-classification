@@ -3,6 +3,7 @@
 \usepackage[spanish]{babel}
 \usepackage[left=4cm,right=4cm]{geometry}
 \usepackage[colorlinks, linkcolor=black, citecolor=magenta]{hyperref}
+\usepackage{cleveref}
 \usepackage{graphicx}
 \usepackage[svgnames]{xcolor}
 \usepackage{minted}
@@ -10,10 +11,17 @@
 \usemintedstyle{pastie}
 \renewcommand\listoflistingscaption{Índice de códigos}
 \renewcommand\listingscaption{Código}
+\crefname{listing}{código}{códigos}
+\Crefname{listing}{Código}{Códigos}
+\crefname{table}{tabla}{tablas}
+\Crefname{table}{Tabla}{Tablas}
 \author{Linderman Dominguez}
 \title{Coffee Leaves Classification}
 \begin{document}
+\renewcommand{\listtablename}{Índice de tablas}
+\renewcommand{\tablename}{Tabla}
 \tableofcontents
+\listoftables
 \listoflistings
 \input{Introduction}
 \input{ProblemStatement}

@@ -74,7 +74,7 @@ Debido a que cuando creamos los objetos \texttt{CoffeeLeaf} el argumento \texttt
 
 El resultado de esta conversión permite visualizar la imagen original (\Cref{img:original}).
 
-\begin{figure}[hbtp]
+\begin{figure}[!ht]
 \centering
 \includegraphics[scale=1]{images/original_image.png}
 \caption{Imagen original en RGB}
@@ -82,20 +82,98 @@ El resultado de esta conversión permite visualizar la imagen original (\Cref{im
 \end{figure}
 
 \subsection{Creación de las regiones de interés}
+La anotación \texttt{geometry} del dataset nos provee de una serie de puntos \texttt{(x,y)} que representan el contorno de la hoja de café y que nos sirven para crear un polígono (\Cref{code:polygon}).
+
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/polygon.py}
+\caption{Puntos (x, y) del contorno de la hoja de café}
+\label{code:polygon}
+\end{listing}
+
+El contorno de la hoja de café se puede apreciar en la \Cref{img:polygon}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/polygon.png}
+\caption{Polígono que delimita el contorno de la hoja}
+\label{img:polygon}
+\end{figure}
+
+Posteriomente creamos el rectángulo mínimo que encierra a esta región, como se aprecia en la \Cref{img:bounding_rect} y lo usamos para recortar nuestra región de interés (véase \Cref{code:roi}).
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/bounding_rect.png}
+\caption{Cuadro que aisla a la hoja de café}
+\label{img:bounding_rect}
+\end{figure}
+
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/roi.py}
+\caption{Crear regiones de interés}
+\label{code:roi}
+\end{listing}
+
+Creamos dos regiones de interés: la primera en \textsf{RGB} (\Cref{img:roi_rgb}) para la presentación al usuario y la segunda en \textsf{HSV} (Hue, Saturation, Value) (\Cref{img:roi_hsv}) que nos servirá en la segmentación de la imagen.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/roi_rgb.png}
+\caption{Región de interés en RGB}
+\label{img:roi_rgb}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/roi_hsv.png}
+\caption{Región de interés en HSV}
+\label{img:roi_hsv}
+\end{figure}
 
 \subsection{Creación de la máscara}
+Utilizando las regiones de interés previamente creadas y el polígono que delimita el contorno de la hoja, procedemos a crear una máscara (\Cref{code:mask}) que nos será útil en las operaciones matriciales del procesamiento de la imagen. Véase \Cref{img:mask}.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/mask.py}
 \caption{Crear máscara}
 \label{code:mask}
 \end{listing}
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/mask.png}
+\caption{Máscara}
+\label{img:mask}
+\end{figure}
+
+Nótese que en \Cref{code:mask} calculamos el área que ocupa la máscara (pixeles en color blanco), o lo que es mismo, el área de la hoja de café.
+
 \subsection{Enmascaramiento de las regiones de interés}
+Una vez teniendo la máscara y las regiones de interés, procedemos a \textit{enmascarar} dichas regiones (\Cref{code:masked_roi}). Para el caso de la región de interés en \textsf{RGB} es por mera conveniencia al presentar esta región al usuario. Sin embargo, para el enmascaramiento de la region de interés en \textsf{HSV} es de suma importancia usar únicamente el canal Hue (Matiz) puesto que nuestra segmantación se basará en el color.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/masked_roi.py}
 \caption{Enmascarar las regiones de interés}
 \label{code:masked_roi}
 \end{listing}
+
+El resultado de este enmascaramiento se puede apreciar en la \Cref{img:masked_roi_rgb} prara \textsf{RGB} y en la \Cref{img:masked_roi_hue} para \textsf{Hue}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/masked_roi_rgb.png}
+\caption{Región de interés RGB enmascarada}
+\label{img:masked_roi_rgb}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/masked_roi_hue.png}
+\caption{Región de interés Hue enmascarada}
+\label{img:masked_roi_hue}
+\end{figure}
+
+Nótese que el valor más bajo para el canal Hue no es un color negro sino un matiz rojo. Esto se debe a la representación circular (o no-lineal) que emplea el modelo \textsf{HSV}.
 
 \subsection{Histograma de las regiones de interés}
 \begin{listing}[!ht]

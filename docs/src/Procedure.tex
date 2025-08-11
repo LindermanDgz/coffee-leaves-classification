@@ -40,7 +40,7 @@ A continuación creamos una clase llamada \texttt{CoffeeLeaf} la cual se encarga
 \label{code:coffee_leaf}
 \end{listing}
 
-\subsection{Lista de objetos CoffeeLeaf}
+Una vez creada la clase \texttt{CoffeeLeaf} y leído los datos del dataset, procedemos a crear la lista \texttt{coffee\_leaves} utilizando los datos de la \Cref{table:required_annotations}, tal como se muestra en \Cref{code:coffee_leaves}. El directorio \texttt{../rocole\_photos/} contiene los archivos \texttt{.jepg} del dataset (\texttt{Annotations/RoCoLe-voc.tar.gz/export}).
 
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/coffee_leaves.py}
@@ -49,8 +49,25 @@ A continuación creamos una clase llamada \texttt{CoffeeLeaf} la cual se encarga
 \end{listing}
 
 \section{Procesado de la imagen}
+Una vez creada la lista \texttt{coffee\_leaves} iniciamos el procesamiento de las imagénes a través de la función \texttt{process} (\Cref{code:process}) de la clase \texttt{CoffeeLeaf}. Véase \Cref{code:process_iteration}.
+
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/process.py}
+\caption{Función process del la clase CoffeeLeaf}
+\label{code:process}
+\end{listing}
+
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/process_iteration.py}
+\caption{Iniciar procesamiento de las imágenes}
+\label{code:process_iteration}
+\end{listing}
 
 \subsection{Conversión de BGR a RGB}
+Debido a que cuando creamos los objetos \texttt{CoffeeLeaf} el argumento \texttt{image\_bgr} pasa datos de una imagen en color \textsf{BGR} (Blue, Green, Red), que es la representación de color por defecto de \textit{OpenCV}, y ya que \textit{matplotlib}, la herramienta para la visualización de las imágenes, utiliza una representación \textsf{RGB} (Red, Green, Blue), una conversión de color es necesaria. Véase \Cref{code:bgr_to_rgb}.
+
+El resultado de esta conversión permite visualizar la imagen original.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/bgr_to_rgb.py}
 \caption{Convertir imgen BGR a RGB}

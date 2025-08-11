@@ -66,13 +66,20 @@ Una vez creada la lista \texttt{coffee\_leaves} iniciamos el procesamiento de la
 \subsection{Conversión de BGR a RGB}
 Debido a que cuando creamos los objetos \texttt{CoffeeLeaf} el argumento \texttt{image\_bgr} pasa datos de una imagen en color \textsf{BGR} (Blue, Green, Red), que es la representación de color por defecto de \textit{OpenCV}, y ya que \textit{matplotlib}, la herramienta para la visualización de las imágenes, utiliza una representación \textsf{RGB} (Red, Green, Blue), una conversión de color es necesaria. Véase \Cref{code:bgr_to_rgb}.
 
-El resultado de esta conversión permite visualizar la imagen original.
-
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/bgr_to_rgb.py}
 \caption{Convertir imgen BGR a RGB}
 \label{code:bgr_to_rgb}
 \end{listing}
+
+El resultado de esta conversión permite visualizar la imagen original (\Cref{img:original}).
+
+\begin{figure}[hbtp]
+\centering
+\includegraphics[scale=1]{images/original_image.png}
+\caption{Imagen original en RGB}
+\label{img:original}
+\end{figure}
 
 \subsection{Creación de las regiones de interés}
 

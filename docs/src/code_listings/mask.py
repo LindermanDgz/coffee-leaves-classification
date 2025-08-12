@@ -5,7 +5,5 @@ def _create_mask(self):
     CONTOURS = -1  # All contours
     COLOR = (255, 255, 255)  # White
     THICKNESS = -1  # Fill
-    self.mask = cv.drawContours(
-        self.mask, [polygon_at_zero], CONTOURS, COLOR, THICKNESS
-    )
+    self.mask = cv.drawContours(self.mask, [polygon_at_zero], CONTOURS, COLOR, THICKNESS)
     self.area = cv.countNonZero(self.mask)

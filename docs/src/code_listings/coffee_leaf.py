@@ -1,5 +1,5 @@
 class CoffeeLeaf:
-    def __init__(self,leaf_id,state,classification,image_bgr,geometry):
+    def __init__(self, leaf_id, state, classification, image_bgr, geometry):
         self.id = leaf_id
         self.state_manual = state
         self.state_computed = None

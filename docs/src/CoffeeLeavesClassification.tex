@@ -1,15 +1,51 @@
-\documentclass[10pt,letterpaper]{report}
+\documentclass[10pt,letterpaper]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-\usepackage[left=4cm,right=4cm]{geometry}
+\usepackage[top=3cm,bottom=5cm,left=4cm,right=4cm]{geometry}
 \usepackage[colorlinks, linkcolor=black, citecolor=magenta]{hyperref}
 \usepackage{cleveref}
 \usepackage{graphicx}
 \usepackage[svgnames]{xcolor}
 \usepackage{minted}
-\AtEndEnvironment{listing}{\vspace{-1em}} % stretch listing's caption distance
-\setminted{bgcolor=WhiteSmoke, breaklines}
 \usemintedstyle{pastie}
+\setminted{bgcolor=WhiteSmoke, breaklines}
+\AtEndEnvironment{listing}{\vspace{-1em}} % stretch listing's caption distance
+\usepackage{emptypage}
+
+\usepackage[dotinlabels]{titletoc}
+\titlecontents
+{chapter}
+[1.5pc]
+{\addvspace{1pc}\bfseries\titlerule[1pt]\filright\addvspace{0.3pc}}
+{\contentslabel[\thecontentslabel]{1.5pc}}
+{}
+{\hfill\contentspage}
+[\addvspace{2pt}]
+
+\usepackage[Rejne]{fncychap}
+\makeatletter
+\renewcommand{\DOCH}{
+    \settoheight{\py}{\CNoV\thechapter}
+    \parskip=0pt plus 1pt
+    \addtolength{\py}{-1pt}
+    \CNV\includegraphics[scale=0.4]{images/coffee_beans.png}\par\nobreak
+    \vskip 20\p@
+    \setlength{\myhi}{2\baselineskip}
+    \setlength{\px}{\myhi}
+    \addtolength{\px}{-1\RW}
+    \rule[-1\px]{\RW}{\myhi}\mghrulefill{\RW}\hskip
+    10pt\raisebox{-0.5\py}{\CNoV\thechapter}\hskip 10pt\mghrulefill{\RW}\rule[-1\px]{\RW}{\myhi}\par\nobreak
+     \vskip -3\p@
+    }
+    \makeatother
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength\headheight{50pt}
+\lhead{\includegraphics[scale=0.1]{images/coffee_beans.png}}
+\fancyhead[LE,RO]{\includegraphics[scale=0.1]{images/coffee_beans.png}}
+\fancyhead[RE,LO]{\rightmark}
+
 \renewcommand\listoflistingscaption{Índice de códigos}
 \renewcommand\listingscaption{Código}
 \crefname{listing}{código}{códigos}
@@ -23,14 +59,19 @@
 \begin{document}
 \renewcommand{\listtablename}{Índice de tablas}
 \renewcommand{\tablename}{Tabla}
+\frontmatter
+\pagestyle{plain}
 \tableofcontents
 \listoflistings
 \listoffigures
 \listoftables
+\mainmatter
+\pagestyle{fancy}
 \input{Introduction}
 \input{ProblemStatement}
 \input{Procedure}
 \input{Results}
 \input{Conclusions}
 \input{References}
+\backmatter
 \end{document}

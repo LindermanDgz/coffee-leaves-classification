@@ -173,21 +173,41 @@ El resultado de este enmascaramiento se puede apreciar en la \Cref{img:masked_ro
 \label{img:masked_roi_hue}
 \end{figure}
 
-Nótese que el valor más bajo para el canal Hue no es un color negro sino un matiz rojo. Esto se debe a la representación circular (o no-lineal) que emplea el modelo \textsf{HSV}.
+Nótese que el valor más bajo para el canal Hue no es un color negro sino un matiz rojo. Esto se debe a la representación circular que emplea el modelo \textsf{HSV}.
 
-\subsection{Histograma de las regiones de interés}
+\subsection{Histograma de la región de interés}
+Una vez que tenemos la región de interés en el canal Hue, procedemos a calcular su histograma (\Cref{code:histogram}) utilizando la máscara (\Cref{img:mask}) de tal manera que no representemos datos fuera del contorno de la hoja. El resultado de la distribución de color puede verse en la \Cref{img:histogram}.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/histogram.py}
 \caption{Cálcular histograma de la región de interés}
 \label{code:histogram}
 \end{listing}
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{images/histogram.png}
+\caption{Histograma de la región de interés}
+\label{img:histogram}
+\end{figure}
+
 \subsection{Segmentación de la imagen}
+Del histograma nos interesa la región de la hoja que se considera saludable, es decir, la region del espectro Hue en matices verdes, un poco del amarillo-naranja (umbral inferior) y hasta la región azul (umbral superior) para cuando las hojas tengan un verde intenso acercándose a tonos azules.
+
+En el \Cref{code:segmentation} hemos asignado al umbral inferior el valor de 30 y al umbral superior el valor de 120. Segmentamos cada parte de los umbrales y el resultado los unimos usando una operación \texttt{AND} elemento por elemento, resultando en la imagen segmentada apropiadamente (\Cref{img:segmentation}).
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/segmentation.py}
 \caption{Segmentar la región de interés}
 \label{code:segmentation}
 \end{listing}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=1]{images/segmentation.png}
+\caption{Imagen segmentada}
+\label{img:segmentation}
+\end{figure}
 
 \subsection{Clasificación de la hoja}
 \begin{listing}[!ht]

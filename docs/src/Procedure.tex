@@ -223,8 +223,17 @@ Para el cálculo del porcentaje afectado, simplemente calculamos el área saluda
 Esta clasificación marca el fin del algoritmo para el procesamiento de la imagen, obteniéndose dos categorías: 1) el estado de la hoja y 2) el nivel de afectación en caso de ser una hoja infectada.
 
 \section{Presentación de los datos}
+A continuación se muestran las funciones que permiten describir el objeto \texttt{Coffee Leaf} de una manera intuitiva al usuario. La función \texttt{describe} (\Cref{code:describe}) orquesta la presentación pero cada función puede accesarse de manera individual.
+
+\begin{listing}[!ht]
+\inputminted{python}{code_listings/describe.py}
+\caption{Describir objeto CoffeeLeaf}
+\label{code:describe}
+\end{listing}
 
 \subsection{Resumen}
+La función \texttt{show\_summary} (\Cref{code:show_summary}) muestra la clasificación original de la hoja, la nueva clasificación calculada y el porcentaje de afectación calculado.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/show_summary.py}
 \caption{Mostrar resumen de la clasificación}
@@ -232,6 +241,8 @@ Esta clasificación marca el fin del algoritmo para el procesamiento de la image
 \end{listing}
 
 \subsection{Imagen original}
+La función \texttt{show\_original\_image} (\Cref{code:show_original_image}) muestra la imagen original en \textsf{RGB} (\Cref{img:original}) y agrega un título.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/show_original_image.py}
 \caption{Mostrar imagen original}
@@ -239,6 +250,8 @@ Esta clasificación marca el fin del algoritmo para el procesamiento de la image
 \end{listing}
 
 \subsection{Máscara}
+La función \texttt{show\_mask} (\Cref{code:show_mask}) muestra la máscara calculada (\Cref{img:mask}) y agrega un título. Nótese que es necesario especificar un mapa de colores, en este caso \textit{gray}, para poder visualizar la máscara en escala de grises, ya que \textit{matplotlib} utiliza el mapa de colores \textit{viridis} por defecto.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/show_mask.py}
 \caption{Mostrar máscara}
@@ -246,6 +259,8 @@ Esta clasificación marca el fin del algoritmo para el procesamiento de la image
 \end{listing}
 
 \subsection{Regiones de interés}
+La función \texttt{show\_roi} (\Cref{code:show_roi}) se encarga de mostrar las regiones de interés enmascaradas y agrega un título. Esta función recibe un argumento \textit{booleano} \texttt{hue} para indicar si se debe mostrar la región de interés en \textsf{RGB} (\Cref{img:masked_roi_rgb}) o bien la del canal Hue (\Cref{img:masked_roi_hue}). Nótese que si se quiere mostrar la región de interés del canal Hue, es necesario especificar el mapa de colores \textit{hsv} para una visualización apropiada.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/show_roi.py}
 \caption{Mostrar regiones de interés}
@@ -253,6 +268,8 @@ Esta clasificación marca el fin del algoritmo para el procesamiento de la image
 \end{listing}
 
 \subsection{Imagen segmentada}
+La función \texttt{show\_binary} (\Cref{code:show_segmentation}) se encarga de mostrar la imagen segmentada (\Cref{img:segmentation}) y agrega un título.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/show_segmentation.py}
 \caption{Mostrar segmentación de la imagen}
@@ -260,6 +277,8 @@ Esta clasificación marca el fin del algoritmo para el procesamiento de la image
 \end{listing}
 
 \subsection{Histograma}
+Finalmente, la función \texttt{show\_histogram} (\Cref{code:show_histogram}) se encarga de mostrar el histograma (\Cref{img:histogram}) de la región de interés del canal Hue (\Cref{img:masked_roi_hue}) y agrega un título, el cual contiene el valor Hue (o Matiz) más abundante.
+
 \begin{listing}[!ht]
 \inputminted{python}{code_listings/show_histogram.py}
 \caption{Mostrar histograma de la región de interés}

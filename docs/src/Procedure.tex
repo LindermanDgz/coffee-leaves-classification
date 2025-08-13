@@ -4,7 +4,7 @@ A continuación se describen los procesos del algoritmo que permiten solucionar 
 \section{Lectura del dataset}
 Se comienza leyendo el dataset que contiene información que ha sido etiquetada de manera manual por los autores del mismo. Este proceso se describe en \Cref{code:load_dataset}.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/load_dataset.py}
 \caption{Cargar las anotaciones del dataset}
 \label{code:load_dataset}
@@ -34,7 +34,7 @@ Label.Leaf.0.geometry & Puntos (x,y) que determinan el contorno de la hoja \\
 \subsection{La clase CoffeeLeaf}
 A continuación creamos una clase llamada \texttt{CoffeeLeaf} la cual se encarga de contener los datos proporcionados en las anotaciones y que representa a una hoja de café. Los atributos de esta clase pueden observarse en \Cref{code:coffee_leaf}.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/coffee_leaf.py}
 \caption{La clase CoffeeLeaf}
 \label{code:coffee_leaf}
@@ -42,7 +42,7 @@ A continuación creamos una clase llamada \texttt{CoffeeLeaf} la cual se encarga
 
 Una vez creada la clase \texttt{CoffeeLeaf} y leído los datos del dataset, procedemos a crear la lista \texttt{coffee\_leaves} utilizando los datos de la \Cref{table:required_annotations}, tal como se muestra en \Cref{code:coffee_leaves}. El directorio \texttt{../rocole\_photos/} contiene los archivos \texttt{.jepg} del dataset (\texttt{Annotations/RoCoLe-voc.tar.gz/export}).
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/coffee_leaves.py}
 \caption{Lista de objetos CoffeLeaf}
 \label{code:coffee_leaves}
@@ -51,13 +51,13 @@ Una vez creada la clase \texttt{CoffeeLeaf} y leído los datos del dataset, proc
 \section{Procesado de la imagen}
 Una vez creada la lista \texttt{coffee\_leaves} iniciamos el procesamiento de las imagénes a través de la función \texttt{process} (\Cref{code:process}) de la clase \texttt{CoffeeLeaf}. Véase \Cref{code:process_iteration}.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/process.py}
 \caption{Función process del la clase CoffeeLeaf}
 \label{code:process}
 \end{listing}
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/process_iteration.py}
 \caption{Iniciar procesamiento de las imágenes}
 \label{code:process_iteration}
@@ -66,7 +66,7 @@ Una vez creada la lista \texttt{coffee\_leaves} iniciamos el procesamiento de la
 \subsection{Conversión de BGR a RGB}
 Debido a que cuando creamos los objetos \texttt{CoffeeLeaf} el argumento \texttt{image\_bgr} pasa datos de una imagen en color \textsf{BGR} (Blue, Green, Red), que es la representación de color por defecto de \textit{OpenCV}, y ya que \textit{matplotlib}, la herramienta para la visualización de las imágenes, utiliza una representación \textsf{RGB} (Red, Green, Blue), una conversión de color es necesaria. Véase \Cref{code:bgr_to_rgb}.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/bgr_to_rgb.py}
 \caption{Convertir imgen BGR a RGB}
 \label{code:bgr_to_rgb}
@@ -74,7 +74,7 @@ Debido a que cuando creamos los objetos \texttt{CoffeeLeaf} el argumento \texttt
 
 El resultado de esta conversión permite visualizar la imagen original (\Cref{img:original}).
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/original_image.png}
 \caption{Imagen original en RGB}
@@ -84,7 +84,7 @@ El resultado de esta conversión permite visualizar la imagen original (\Cref{im
 \subsection{Creación de las regiones de interés}
 La anotación \texttt{geometry} del dataset nos provee de una serie de puntos \texttt{(x,y)} que representan el contorno de la hoja de café y que nos sirven para crear un polígono (\Cref{code:polygon}).
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/polygon.py}
 \caption{Puntos (x, y) del contorno de la hoja de café}
 \label{code:polygon}
@@ -92,7 +92,7 @@ La anotación \texttt{geometry} del dataset nos provee de una serie de puntos \t
 
 El contorno de la hoja de café se puede apreciar en la \Cref{img:polygon}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/polygon.png}
 \caption{Polígono que delimita el contorno de la hoja}
@@ -101,14 +101,14 @@ El contorno de la hoja de café se puede apreciar en la \Cref{img:polygon}.
 
 Posteriomente creamos el rectángulo mínimo que encierra a esta región, como se aprecia en la \Cref{img:bounding_rect} y lo usamos para recortar nuestra región de interés (véase \Cref{code:roi}).
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/bounding_rect.png}
 \caption{Cuadro que aisla a la hoja de café}
 \label{img:bounding_rect}
 \end{figure}
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/roi.py}
 \caption{Crear regiones de interés}
 \label{code:roi}
@@ -116,14 +116,14 @@ Posteriomente creamos el rectángulo mínimo que encierra a esta región, como s
 
 Creamos dos regiones de interés: la primera en \textsf{RGB} (\Cref{img:roi_rgb}) para la presentación al usuario y la segunda en \textsf{HSV} (Hue, Saturation, Value) (\Cref{img:roi_hsv}) que nos servirá en la segmentación de la imagen.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/roi_rgb.png}
 \caption{Región de interés en RGB}
 \label{img:roi_rgb}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/roi_hsv.png}
 \caption{Región de interés en HSV}
@@ -133,13 +133,13 @@ Creamos dos regiones de interés: la primera en \textsf{RGB} (\Cref{img:roi_rgb}
 \subsection{Creación de la máscara}
 Utilizando las regiones de interés previamente creadas y el polígono que delimita el contorno de la hoja, procedemos a crear una máscara (\Cref{code:mask}) que nos será útil en las operaciones matriciales del procesamiento de la imagen. Véase \Cref{img:mask}.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/mask.py}
 \caption{Crear máscara}
 \label{code:mask}
 \end{listing}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/mask.png}
 \caption{Máscara}
@@ -151,7 +151,7 @@ Nótese que en \Cref{code:mask} calculamos el área que ocupa la máscara (pixel
 \subsection{Enmascaramiento de las regiones de interés}
 Una vez teniendo la máscara y las regiones de interés, procedemos a \textit{enmascarar} dichas regiones (\Cref{code:masked_roi}). Para el caso de la región de interés en \textsf{RGB} es por mera conveniencia al presentar esta región al usuario. Sin embargo, para el enmascaramiento de la region de interés en \textsf{HSV} es de suma importancia usar únicamente el canal Hue (Matiz) puesto que nuestra segmantación se basará en el color.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/masked_roi.py}
 \caption{Enmascarar las regiones de interés}
 \label{code:masked_roi}
@@ -159,14 +159,14 @@ Una vez teniendo la máscara y las regiones de interés, procedemos a \textit{en
 
 El resultado de este enmascaramiento se puede apreciar en la \Cref{img:masked_roi_rgb} prara \textsf{RGB} y en la \Cref{img:masked_roi_hue} para \textsf{Hue}.
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/masked_roi_rgb.png}
 \caption{Región de interés RGB enmascarada}
 \label{img:masked_roi_rgb}
 \end{figure}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/masked_roi_hue.png}
 \caption{Región de interés Hue enmascarada}
@@ -178,13 +178,13 @@ Nótese que el valor más bajo para el canal Hue no es un color negro sino un ma
 \subsection{Histograma de la región de interés}
 Una vez que tenemos la región de interés en el canal Hue, procedemos a calcular su histograma (\Cref{code:histogram}) utilizando la máscara (\Cref{img:mask}) de tal manera que no representemos datos fuera del contorno de la hoja. El resultado de la distribución de color puede verse en la \Cref{img:histogram}.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/histogram.py}
 \caption{Cálcular histograma de la región de interés}
 \label{code:histogram}
 \end{listing}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{images/histogram.png}
 \caption{Histograma de la región de interés}
@@ -197,13 +197,13 @@ Del histograma nos interesa la región de la hoja que se considera saludable, es
 
 En el \Cref{code:segmentation} hemos asignado al umbral inferior el valor de 30 y al umbral superior el valor de 120. Segmentamos cada parte de los umbrales y el resultado los unimos usando una operación \texttt{AND} elemento por elemento, resultando en la imagen segmentada apropiadamente (\Cref{img:segmentation}).
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/segmentation.py}
 \caption{Segmentar la región de interés}
 \label{code:segmentation}
 \end{listing}
 
-\begin{figure}[!ht]
+\begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/segmentation.png}
 \caption{Imagen segmentada}
@@ -215,7 +215,7 @@ Una vez segmentada la hoja de café en su parte saludable (pixeles blancos) e in
 
 Para el cálculo del porcentaje afectado, simplemente calculamos el área saludable de la hoja a partir de la imagen segmentada (\Cref{img:segmentation}) y restamos este valor al área de la máscara (\Cref{code:mask}), como se describe en \Cref{code:categorize}.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/categorize.py}
 \caption{Clasificar hoja de café}
 \label{code:categorize}
@@ -226,7 +226,7 @@ Esta clasificación marca el fin del algoritmo para el procesamiento de la image
 \section{Presentación de los datos}
 A continuación se muestran las funciones que permiten describir el objeto \texttt{Coffee Leaf} de una manera intuitiva al usuario. La función \texttt{describe} (\Cref{code:describe}) orquesta la presentación pero cada función puede accesarse de manera individual.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/describe.py}
 \caption{Describir objeto CoffeeLeaf}
 \label{code:describe}
@@ -235,7 +235,7 @@ A continuación se muestran las funciones que permiten describir el objeto \text
 \subsection{Resumen}
 La función \texttt{show\_summary} (\Cref{code:show_summary}) muestra la clasificación original de la hoja, la nueva clasificación calculada y el porcentaje de afectación calculado.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/show_summary.py}
 \caption{Mostrar resumen de la clasificación}
 \label{code:show_summary}
@@ -244,7 +244,7 @@ La función \texttt{show\_summary} (\Cref{code:show_summary}) muestra la clasifi
 \subsection{Imagen original}
 La función \texttt{show\_original\_image} (\Cref{code:show_original_image}) muestra la imagen original en \textsf{RGB} (\Cref{img:original}) y agrega un título.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/show_original_image.py}
 \caption{Mostrar imagen original}
 \label{code:show_original_image}
@@ -253,7 +253,7 @@ La función \texttt{show\_original\_image} (\Cref{code:show_original_image}) mue
 \subsection{Máscara}
 La función \texttt{show\_mask} (\Cref{code:show_mask}) muestra la máscara calculada (\Cref{img:mask}) y agrega un título. Nótese que es necesario especificar un mapa de colores, en este caso \textit{gray}, para poder visualizar la máscara en escala de grises, ya que \textit{matplotlib} utiliza el mapa de colores \textit{viridis} por defecto.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/show_mask.py}
 \caption{Mostrar máscara}
 \label{code:show_mask}
@@ -262,7 +262,7 @@ La función \texttt{show\_mask} (\Cref{code:show_mask}) muestra la máscara calc
 \subsection{Regiones de interés}
 La función \texttt{show\_roi} (\Cref{code:show_roi}) se encarga de mostrar las regiones de interés enmascaradas y agrega un título. Esta función recibe un argumento \textit{booleano} \texttt{hue} para indicar si se debe mostrar la región de interés en \textsf{RGB} (\Cref{img:masked_roi_rgb}) o bien la del canal Hue (\Cref{img:masked_roi_hue}). Nótese que si se quiere mostrar la región de interés del canal Hue, es necesario especificar el mapa de colores \textit{hsv} para una visualización apropiada.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/show_roi.py}
 \caption{Mostrar regiones de interés}
 \label{code:show_roi}
@@ -271,7 +271,7 @@ La función \texttt{show\_roi} (\Cref{code:show_roi}) se encarga de mostrar las 
 \subsection{Imagen segmentada}
 La función \texttt{show\_binary} (\Cref{code:show_segmentation}) se encarga de mostrar la imagen segmentada (\Cref{img:segmentation}) y agrega un título.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/show_segmentation.py}
 \caption{Mostrar segmentación de la imagen}
 \label{code:show_segmentation}
@@ -280,7 +280,7 @@ La función \texttt{show\_binary} (\Cref{code:show_segmentation}) se encarga de 
 \subsection{Histograma}
 Finalmente, la función \texttt{show\_histogram} (\Cref{code:show_histogram}) se encarga de mostrar el histograma (\Cref{img:histogram}) de la región de interés del canal Hue (\Cref{img:masked_roi_hue}) y agrega un título, el cual contiene el valor Hue (o Matiz) más abundante.
 
-\begin{listing}[!ht]
+\begin{listing}[H]
 \inputminted{python}{code_listings/show_histogram.py}
 \caption{Mostrar histograma de la región de interés}
 \label{code:show_histogram}

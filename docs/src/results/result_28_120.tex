@@ -1,0 +1,64 @@
+La \Cref{table:efficiency_general_28_120} muestra el porcentaje de eficiencia alcanzado para clasificar las hojas de café por su estado saludable o infectado (\Cref{img:efficiency_state_28_120}), o bien, el porcentaje de eficiencia global para las categorías (\Cref{img:efficiency_category_28_120}).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|l|l|l|l|}
+\hline 
+\textbf{Clasificación} & \textbf{Total} & \textbf{Aciertos} & \textbf{Errores} & \textbf{Eficiencia} \\
+\hline
+Estado & 1393 & 962 & 431 & 69.059 \\
+\hline 
+Categoría & 1393 & 715 & 678 & 51.328 \\
+\hline 
+\end{tabular}
+\caption{Eficiencias generales con Hue 28-120}
+\label{table:efficiency_general_28_120}
+\end{table}
+
+\captionsetup[figure]{skip=-10pt}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=0.6]{images/result_global_state_28_120.png}
+\caption{Eficiencia detectando el estado con Hue 28-120}
+\label{img:efficiency_state_28_120}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{images/result_global_class_28_120.png}
+\caption{Eficiencia detectando la categoría con Hue 28-120}
+\label{img:efficiency_category_28_120}
+\end{figure}
+
+\captionsetup[figure]{skip=10pt}
+
+A su vez la \Cref{table:efficiency_categories_28_120} muestra la eficiencia alcanzada por cada una de las categorías: saludable, roya nivel 1, roya nivel 2, roya nivel 3 y roya nivel 4 (\Cref{img:efficiency_categories_28_120}).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline 
+\textbf{Categoría} & \textbf{Original} & \textbf{Calculado} & \textbf{Eficiencia} \\
+\hline
+healthy & 791 & 445 & 56.257 \\
+\hline 
+rust\_level\_1 & 344 & 196 & 56.976 \\
+\hline 
+rust\_level\_2 & 166 & 67 & 40.361 \\
+\hline 
+rust\_level\_3 & 62 & 6 & 9.677 \\
+\hline 
+rust\_level\_4 & 30 & 1 & 3.333 \\
+\hline 
+\end{tabular}
+\caption{Eficiencia por categoría con Hue 28-120}
+\label{table:efficiency_categories_28_120}
+\end{table}
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.6]{images/result_classes_28_120.png}
+\caption{Eficiencia por categoría con Hue 28-120}
+\label{img:efficiency_categories_28_120}
+\end{figure}

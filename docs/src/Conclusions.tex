@@ -78,6 +78,47 @@ El algoritmo ignora el haz y el envés (\Cref{img:backbone_rgb}) de la hoja, por
 
 \section{Conclusiones específicas}
 
+\begin{enumerate}
+\item No existe una solución única.
+
+El algoritmo no provee una solución general, es decir, dependiendo de la clasificación de las hojas que se desea buscar o analizar, debería elegirse umbrales de segmentación diferentes. La \Cref{table:recommended_segmentation} proporciona la mejor configuración encontrada para cada una de las categorías establecidas.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline 
+\textbf{Clasificación} & \textbf{Umbral de segmentación} \\ 
+\hline 
+healthy & 25 - 120 \\ 
+\hline 
+rust\_level\_1 & 30 - 100 \\ 
+\hline 
+rust\_level\_2 & 30 - 80 \\ 
+\hline 
+rust\_level\_3 & 40 - 80 \\ 
+\hline 
+rust\_level\_4 & 40 - 80/120 \\ 
+\hline 
+\end{tabular}
+\caption{Umbrales de segmentación recomendados}
+\label{table:recommended_segmentation}
+\end{table}
+
+\item El dataset presenta inconsistencias.
+
+Parte de la ineficiencia del algoritmo se debe a que algunas anotaciones en el dataset fueron mal etiquetadas:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/consideration_tag_error.png}
+\caption{Inconsistencias en el dataset}
+\label{img:dataset_inconsistencies}
+\end{figure}
+
+No puede suceder que la clasificación de una hoja sea marcada como saludable mientras que su estado sea no-saludable (\Cref{img:dataset_inconsistencies}). Se encontraron \textbf{4} inconsistencias en el dataset (descartando la categoría \textit{araña roja}).
+
+\end{enumerate}
+
 \section{Conclusiones generales}
 
 \section{Mejoras y trabajo a futuro}

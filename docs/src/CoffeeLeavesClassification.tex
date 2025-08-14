@@ -27,16 +27,17 @@
 \makeatletter
 \renewcommand{\DOCH}{
     \settoheight{\py}{\CNoV\thechapter}
-    \parskip=0pt plus 1pt
+    \parskip=0pt plus 5pt
     \addtolength{\py}{-1pt}
-    \CNV\includegraphics[scale=0.4]{images/coffee_beans.png}\par\nobreak
-    \vskip \p@
+    \CNV\includegraphics[scale=0.5]{images/coffee_beans.png}\par\nobreak
+    \vskip 20\p@
     \setlength{\myhi}{2\baselineskip}
     \setlength{\px}{\myhi}
     \addtolength{\px}{-1\RW}
-    \rule[-1\px]{\RW}{\myhi}\mghrulefill{\RW}\hskip
-    10pt\raisebox{-0.5\py}{\CNoV\thechapter}\hskip 10pt\mghrulefill{\RW}\rule[-1\px]{\RW}{\myhi}\par\nobreak
-     \vskip -3\p@
+    \rule[-1\px]{\RW}{\myhi}\mghrulefill{\RW}\hskip 10pt
+    \raisebox{-0.5\py}{\CNoV\thechapter}\hskip 10pt
+    \mghrulefill{\RW}\rule[-1\px]{\RW}{\myhi}\par\nobreak
+    \vskip -5\p@
     }
     \makeatother
 

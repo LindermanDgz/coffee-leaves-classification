@@ -122,3 +122,36 @@ No puede suceder que la clasificación de una hoja sea marcada como saludable mi
 \section{Conclusiones generales}
 
 \section{Mejoras y trabajo a futuro}
+
+\begin{enumerate}
+
+\item Detección de objetos.
+
+Actualmente el algoritmo se apoya en las anotaciones del dataset para la determinación del contorno de las hojas y la creación de la máscara. Sin embargo, el aislamiento no es preciso e introduce ruido al sistema.
+
+La \Cref{img:issue_countour_rgb} muestra el contorno asignado a una hoja saludable el cual no es preciso e introduce matices no deseados en el canal Hue (\Cref{img:issue_countour_hue}) provocando una segmentación incorrecta de la imagen (\Cref{img:issue_countour_binary}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{images/consideration_contour_rgb.png}
+\caption{Contorno impreciso de una hoja saludable}
+\label{img:issue_countour_rgb}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{images/consideration_contour_hue.png}
+\caption{Matices no deseados en un contorno impreciso}
+\label{img:issue_countour_hue}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{images/consideration_contour_binary.png}
+\caption{Introducción de zonas afectadas debido a un contorno impreciso}
+\label{img:issue_countour_binary}
+\end{figure}
+
+Una mejora sugerida para resolver este problema es la creación de un algoritmo (o método) para la detección de objetos que permita aislar la región de interés de manera precisa mejorando el rendimiento global del algoritmo.
+
+\end{enumerate}

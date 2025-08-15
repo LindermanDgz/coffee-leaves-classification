@@ -76,56 +76,6 @@ El algoritmo ignora el haz y el envés (\Cref{img:backbone_rgb}) de la hoja, por
 \label{img:backbone_binary}
 \end{figure}
 
-\section{Conclusiones específicas}
-
-\begin{enumerate}
-\item No existe una solución única.
-
-El algoritmo no provee una solución general, es decir, dependiendo de la clasificación de las hojas que se desea buscar o analizar, debería elegirse umbrales de segmentación diferentes. La \Cref{table:recommended_segmentation} proporciona la mejor configuración encontrada para cada una de las categorías establecidas.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline 
-\textbf{Clasificación} & \textbf{Umbral de segmentación} & \textbf{Eficiencia \%}\\ 
-\hline 
-healthy & 25 - 120 & 71.175 \\ 
-\hline 
-rust\_level\_1 & 30 - 100 & 58.72 \\ 
-\hline 
-rust\_level\_2 & 30 - 80 & 44.578 \\ 
-\hline 
-rust\_level\_3 & 40 - 80 & 35.483 \\ 
-\hline 
-rust\_level\_4 & 40 - 80/120 & 40.00 \\ 
-\hline 
-\end{tabular}
-\caption{Umbrales de segmentación recomendados}
-\label{table:recommended_segmentation}
-\end{table}
-
-\item El dataset presenta inconsistencias.
-
-Parte de la ineficiencia del algoritmo se debe a que algunas anotaciones en el dataset fueron mal etiquetadas:
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{images/consideration_tag_error.png}
-\caption{Inconsistencias en el dataset}
-\label{img:dataset_inconsistencies}
-\end{figure}
-
-No puede suceder que la clasificación de una hoja sea marcada como saludable mientras que su estado sea no-saludable (\Cref{img:dataset_inconsistencies}). Se encontraron \textbf{4} inconsistencias en el dataset (descartando la categoría \textit{araña roja}).
-
-\end{enumerate}
-
-\section{Conclusiones generales}
-Un procesamiento digital de imágenes tradicional generalmente es más eficiente cuando el campo u objeto de estudio es reducido y está normalizado, es decir, no hay mucha variabilidad en las condiciones que describen al sistema.
-
-Este tipo de procesamiento nos da la flexibilidad de poder controlar las características a analizar o identificar de manera precisa, sin embargo, es eso mismo lo que lo hace menos portable o escalable ya que para nuevas condiciones en el sistema, el algoritmo deberá ser ajustado, implicando un alto grado de supervisión humana.
-
-Cabe mencionar que podemos mejorar estos algoritmos tanto como sea necesario para hacerlos más precisos y aumentar su eficiencia pero hay que considerar el tiempo de desarrollo y el costo computacional agregado.
-
 \section{Mejoras y trabajo a futuro}
 
 \begin{enumerate}
@@ -195,3 +145,53 @@ Una segmentación basada en colores \textsf{RGB} podría ser más eficaz e intui
 \end{figure}
 
 \end{enumerate}
+
+\section{Conclusiones específicas}
+
+\begin{enumerate}
+\item No existe una solución única.
+
+El algoritmo no provee una solución general, es decir, dependiendo de la clasificación de las hojas que se desea buscar o analizar, debería elegirse umbrales de segmentación diferentes. La \Cref{table:recommended_segmentation} proporciona la mejor configuración encontrada para cada una de las categorías establecidas.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline 
+\textbf{Clasificación} & \textbf{Umbral de segmentación} & \textbf{Eficiencia \%}\\ 
+\hline 
+healthy & 25 - 120 & 71.175 \\ 
+\hline 
+rust\_level\_1 & 30 - 100 & 58.72 \\ 
+\hline 
+rust\_level\_2 & 30 - 80 & 44.578 \\ 
+\hline 
+rust\_level\_3 & 40 - 80 & 35.483 \\ 
+\hline 
+rust\_level\_4 & 40 - 80/120 & 40.00 \\ 
+\hline 
+\end{tabular}
+\caption{Umbrales de segmentación recomendados}
+\label{table:recommended_segmentation}
+\end{table}
+
+\item El dataset presenta inconsistencias.
+
+Parte de la ineficiencia del algoritmo se debe a que algunas anotaciones en el dataset fueron mal etiquetadas:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/consideration_tag_error.png}
+\caption{Inconsistencias en el dataset}
+\label{img:dataset_inconsistencies}
+\end{figure}
+
+No puede suceder que la clasificación de una hoja sea marcada como saludable mientras que su estado sea no-saludable (\Cref{img:dataset_inconsistencies}). Se encontraron \textbf{4} inconsistencias en el dataset (descartando la categoría \textit{araña roja}).
+
+\end{enumerate}
+
+\section{Conclusiones generales}
+Un procesamiento digital de imágenes tradicional generalmente es más eficiente cuando el campo u objeto de estudio es reducido y está normalizado, es decir, no hay mucha variabilidad en las condiciones que describen al sistema.
+
+Este tipo de procesamiento nos da la flexibilidad de poder controlar las características a analizar o identificar de manera precisa, sin embargo, es eso mismo lo que lo hace menos portable o escalable ya que para nuevas condiciones en el sistema, el algoritmo deberá ser ajustado, implicando un alto grado de supervisión humana.
+
+Cabe mencionar que podemos mejorar estos algoritmos tanto como sea necesario para hacerlos más precisos y aumentar su eficiencia pero hay que considerar el tiempo de desarrollo y el costo computacional agregado.

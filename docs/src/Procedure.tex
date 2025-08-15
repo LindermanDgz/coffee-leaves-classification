@@ -10,7 +10,7 @@ Se comienza leyendo el dataset que contiene información que ha sido etiquetada 
 \label{code:load_dataset}
 \end{listing}
 
-Utilizando la biblioteca \texttt{json} de Python leémos el archivo \texttt{RoCoLE.json} (originalmente \texttt{Annotations/RoCoLE-json.json}). La variable \texttt{annotations} contiene la información necesaria para contruir nuestro conjunto de datos de prueba (véase \Cref{table:required_annotations}).
+Utilizando la biblioteca \texttt{json} de Python leemos el archivo \texttt{RoCoLE.json} (originalmente \texttt{Annotations/RoCoLE-json.json}). La variable \texttt{annotations} contiene la información necesaria para construir nuestro conjunto de datos de prueba (véase \Cref{table:required_annotations}).
 
 \begin{table}[H]
 \centering
@@ -146,10 +146,10 @@ Utilizando las regiones de interés previamente creadas y el polígono que delim
 \label{img:mask}
 \end{figure}
 
-Nótese que en \Cref{code:mask} calculamos el área que ocupa la máscara (pixeles en color blanco), o lo que es mismo, el área de la hoja de café.
+Nótese que en \Cref{code:mask} calculamos el área que ocupa la máscara (pixeles en color blanco), o lo que es lo mismo, el área de la hoja de café.
 
 \subsection{Enmascaramiento de las regiones de interés}
-Una vez teniendo la máscara y las regiones de interés, procedemos a \textit{enmascarar} dichas regiones (\Cref{code:masked_roi}). Para el caso de la región de interés en \textsf{RGB} es por mera conveniencia al presentar esta región al usuario. Sin embargo, para el enmascaramiento de la region de interés en \textsf{HSV} es de suma importancia usar únicamente el canal Hue (Matiz) puesto que nuestra segmantación se basará en el color.
+Una vez teniendo la máscara y las regiones de interés, procedemos a \textit{enmascarar} dichas regiones (\Cref{code:masked_roi}). Para el caso de la región de interés en \textsf{RGB} es por mera conveniencia al presentar esta región al usuario. Sin embargo, para el enmascaramiento de la región de interés en \textsf{HSV} es de suma importancia usar únicamente el canal Hue (matiz) puesto que nuestra segmentación se basará en el color.
 
 \begin{listing}[H]
 \inputminted{python}{code_listings/masked_roi.py}
@@ -193,7 +193,7 @@ Una vez que tenemos la región de interés en el canal Hue, procedemos a calcula
 
 \subsection{Segmentación de la imagen}
 \label{sec:segmentation}
-Del histograma nos interesa la región de la hoja que se considera saludable, es decir, la region del espectro Hue en matices verdes, un poco del amarillo-naranja (umbral inferior) y hasta la región azul (umbral superior) para cuando las hojas tengan un verde intenso acercándose a tonos azules.
+Del histograma nos interesa la región de la hoja que se considera saludable, es decir, la región del espectro Hue en matices verdes, un poco del amarillo-naranja (umbral inferior) y hasta la región azul (umbral superior) para cuando las hojas tengan un verde intenso acercándose a tonos azules.
 
 En el \Cref{code:segmentation} hemos asignado al umbral inferior el valor de 30 y al umbral superior el valor de 120. Segmentamos cada parte de los umbrales y el resultado los unimos usando una operación \texttt{AND} elemento por elemento, resultando en la imagen segmentada apropiadamente (\Cref{img:segmentation}).
 
@@ -278,7 +278,7 @@ La función \texttt{show\_binary} (\Cref{code:show_segmentation}) se encarga de 
 \end{listing}
 
 \subsection{Histograma}
-Finalmente, la función \texttt{show\_histogram} (\Cref{code:show_histogram}) se encarga de mostrar el histograma (\Cref{img:histogram}) de la región de interés del canal Hue (\Cref{img:masked_roi_hue}) y agrega un título, el cual contiene el valor Hue (o Matiz) más abundante.
+Finalmente, la función \texttt{show\_histogram} (\Cref{code:show_histogram}) se encarga de mostrar el histograma (\Cref{img:histogram}) de la región de interés del canal Hue (\Cref{img:masked_roi_hue}) y agrega un título, el cual contiene el valor Hue (matiz) más abundante.
 
 \begin{listing}[H]
 \inputminted{python}{code_listings/show_histogram.py}

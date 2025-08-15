@@ -26,4 +26,16 @@ Se utilizará \textit{Python} como lenguaje de programación para la implementac
 \section{Metodología}
 El proceso comienza con la adquisición de las imágenes de las hojas de café, las cuales se transformarán del modelo RGB (Red, Green, Blue) al HSV (Hue, Saturation, Value) para poder aislar el canal Hue. Utilizando diferentes umbrales para los matices en el canal Hue segmentaremos la región de interés que indica la presencia de roya. Utilizando la imagen segmentada clasificaremos la severidad de la afectación a través de una operación entre el área de la imagen segmentada y una máscara que represente el área de la hoja. Finalmente revisaremos la eficiencia del algoritmo comparando nuestros resultados con las clasificaciones hechas por expertos.
 
-\subsection{Modelo de colores HSV}
+\subsection{Modelo de color HSV}
+El modelo de color HSV (Hue, Saturation, Value - Matiz, Saturación, Valor), también conocido como HSB (Hue, Saturation, Brightness - Matiz, Saturación, Brillo) es una representación no-lineal de los colores RGB (Red, Green, Blue - Rojo, Verde, Azul) que ofrece una representación más intuitiva ya que se asemeja a la forma en la que el ojo humano percibe el color.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{images/hsv_model.png}
+\caption{Modelo de color HSV}
+\label{img:polygon}
+\end{figure}
+
+Una de sus principales ventajas en el ámbito del procesamiento digital de imágenes es que facilita la segmentación de objetos coloridos. Además que, en muchos contextos, el color está asociado a ciertas características inherentes del sistema bajo estudio.
+
+Tal es el caso de la infección por roya en hojas de café, la cual produce cambios de color en las hojas afectadas e incluso cada color indicando un nivel de afectación diferente.

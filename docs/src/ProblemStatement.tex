@@ -3,10 +3,7 @@ El café es un producto altamente consumido en el mundo y es una de las bebidas 
 
 El precio del café tuvo un incremento en el último año, sin embargo, las plagas representan un riesgo para su producción. Algunas plagas como la roya, la araña roja o la broca, pueden causar perdidas severas tanto económicas como de materia prima que bien podrían minimizarse o incluso prevenirse mediante un monitoreo adecuado y regular de la plantación evitando medidas drásticas correctivas como la aplicación de químicos.
 
-El monitoreo de los cultivos de café generalmente require de capacitación o asesoría técnica especializada que muchas veces es cara o inaccesible. El proyecto que aquí se presenta busca ofrecer una alternativa para quienes apenas ingresan en el mundo del café o bien si no se cuenta con los recursos de inversión suficientes.
-
-\section{Clasificación de hojas de café infectadas por roya usando una segmentación por matices en el canal Hue}
-Este proyecto se enfoca en la detección automatizada de hojas de café infectadas por la plaga de la roya basándose en las características de color manifestadas por la afección, conectando así tres mundos de distinta naturaleza: agricultura, óptica y tecnología.
+El monitoreo de los cultivos de café generalmente require de capacitación o asesoría técnica especializada que muchas veces es cara o inaccesible. El proyecto \textit{Clasificación de hojas de café infectadas por roya usando segmentación por matices en el canal Hue} busca ofrecer una alternativa para quienes apenas ingresan en el mundo del café o bien si no se cuenta con los recursos de inversión suficientes.
 
 \section{Objetivo general}
 Demostrar las habilidades adquiridas durante el seminario \textit{Procesamiento Digital de Imágenes: Fundamentos y Aplicaciones con GNU Octave y Open CV} aplicando los principios y técnicas básicas de manera práctica a un proyecto en particular.
@@ -24,7 +21,7 @@ El algoritmo y las técnicas utilizadas pueden aplicarse de manera directa en el
 Se utilizará \textit{Python} como lenguaje de programación para la implementación del algoritmo debido a su facilidad de uso y al amplio número de bibliotecas disponibles para el procesamiento de imágenes tales como \textit{OpenCV}. Así mismo, se utilizará una libreta de \textit{Jupyter} para la ejecución del algoritmo debido a su flexibilidad para ejecutar trozos de código de manera interactiva.
 
 \section{Metodología}
-El proceso comienza con la adquisición de las imágenes de las hojas de café, las cuales se transformarán del modelo RGB (Red, Green, Blue) al HSV (Hue, Saturation, Value) para poder aislar el canal Hue. Utilizando diferentes umbrales para los matices en el canal Hue segmentaremos la región de interés que indica la presencia de roya. Utilizando la imagen segmentada clasificaremos la severidad de la afectación a través de una operación entre el área de la imagen segmentada y una máscara que represente el área de la hoja. Finalmente revisaremos la eficiencia del algoritmo comparando nuestros resultados con las clasificaciones hechas por expertos.
+El proceso comienza con la adquisición de las imágenes de las hojas de café, las cuales se transformarán del modelo RGB (Red, Green, Blue) al HSV (Hue, Saturation, Value) para poder aislar el canal Hue. Aplicando diferentes umbrales para los matices, segmentaremos la región de interés en busca de presencia de roya. Usando la imagen segmentada clasificaremos la severidad de la afectación a través de una operación entre el área de la imagen segmentada y una máscara que represente el área de la hoja. Finalmente revisaremos la eficiencia del algoritmo comparando nuestros resultados con las clasificaciones hechas por expertos.
 
 \subsection{Modelo de color HSV}
 El modelo de color HSV (Hue, Saturation, Value - Matiz, Saturación, Valor), también conocido como HSB (Hue, Saturation, Brightness - Matiz, Saturación, Brillo) es una representación no-lineal de los colores RGB (Red, Green, Blue - Rojo, Verde, Azul) que ofrece una representación más intuitiva ya que se asemeja a la forma en la que el ojo humano percibe el color.
@@ -39,3 +36,6 @@ El modelo de color HSV (Hue, Saturation, Value - Matiz, Saturación, Valor), tam
 Una de sus principales ventajas en el ámbito del procesamiento digital de imágenes es que facilita la segmentación de objetos coloridos. Además que, en muchos contextos, el color está asociado a ciertas características inherentes del sistema bajo estudio.
 
 Tal es el caso de la infección por roya en hojas de café, la cual produce cambios de color en las hojas afectadas e incluso cada color indicando un nivel de afectación diferente.
+
+\subsection{RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition}
+Utilizando el dataset provisto en el siguiente artículo ...

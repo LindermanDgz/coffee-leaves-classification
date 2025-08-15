@@ -160,4 +160,33 @@ Los umbrales de segmentación sugeridos en la \Cref{table:recommended_segmentati
 
 Una forma automatizada de encontrar umbrales más eficientes, o de verificar que no los hay, es mediante el uso de algoritmos genéticos. Este proceso identificaría la configuración más eficiente de los umbrales maximizando su nivel de eficiencia, o bien, reduciendo el margen de error.
 
+\item Análisis en \textsf{RGB}.
+
+A pesar de que la segmentación por matices en el canal Hue es útil para la detección de zonas afectadas, no nos proporciona información acerca de la severidad en la zona, o si bien lo hace, tal información es fácil de confundirse con otras propiedades que generan matices similares (\Cref{img:issue_severity_hue}).
+
+Existen casos en que una hoja presenta un área mínima de afectación pero con una severidad muy alta (\Cref{img:issue_severity_rgb}) catalogándola automáticamente como severamente afectada. En otras palabras, el área afectada (\Cref{img:issue_severity_binary}) no es suficiente para la clasificación correcta de la hoja.
+
+Una segmentación basada en colores \textsf{RGB} podría ser más eficaz e intuitiva para estos casos.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{images/consideration_severity_rgb.png}
+\caption{Hoja de café con afectación severa en zona reducida}
+\label{img:issue_severity_rgb}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{images/consideration_severity_hue.png}
+\caption{Canal Hue de afectación severa en zona reducida}
+\label{img:issue_severity_hue}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1]{images/consideration_severity_binary.png}
+\caption{Área afectada de una hoja con afectación severa en zona reducida}
+\label{img:issue_severity_binary}
+\end{figure}
+
 \end{enumerate}

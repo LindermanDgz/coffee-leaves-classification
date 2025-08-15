@@ -154,4 +154,10 @@ La \Cref{img:issue_countour_rgb} muestra el contorno asignado a una hoja saludab
 
 Una mejora sugerida para resolver este problema es la creación de un algoritmo (o método) para la detección de objetos que permita aislar la región de interés de manera precisa mejorando el rendimiento global del algoritmo.
 
+\item Optimización de los umbrales de segmentación.
+
+Los umbrales de segmentación sugeridos en la \Cref{table:recommended_segmentation} fueron calculados manualmente a través de un enfoque de prueba y error. Por lo tanto, pueden existir umbrales que mejoran el rendimiento del algoritmo.
+
+Una forma automatizada de encontrar umbrales más eficientes, o de verificar que no los hay, es mediante el uso de algoritmos genéticos. Este proceso identificaría la configuración más eficiente de los umbrales maximizando su nivel de eficiencia, o bien, reduciendo el margen de error.
+
 \end{enumerate}

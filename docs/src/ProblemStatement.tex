@@ -38,6 +38,27 @@ Una de sus principales ventajas en el ámbito del procesamiento digital de imág
 Tal es el caso de la infección por roya en hojas de café, la cual produce cambios de color en las hojas afectadas e incluso cada color indicando un nivel de afectación diferente.
 
 \subsection{RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition}
-En el artículo \textit{RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition} \cite{PARRAGAALAVA2019104414}, Jorge Parraga-Alava, Kevin Cusme, Angélica Loor y Esneider Santander nos proporcionan el dataset \textit{RoCoLe: A robusta coffee leaf images dataset} \cite{RoCoLe} el cual contiene imágenes de hojas de café robusta manualmente clasificadas por su estado de salud y severidad de afectación por roya.
+En el artículo \textit{RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition} \cite{PARRAGAALAVA2019104414}, Jorge Parraga-Alava, Kevin Cusme, Angélica Loor y Esneider Santander nos proporcionan el dataset \textit{RoCoLe: A robusta coffee leaf images dataset} \cite{RoCoLe} el cual contiene imágenes de hojas de café robusta manualmente clasificadas por su estado de salud y severidad de afectación por roya. Usaremos este dataset como la fuente de imágenes para nuestro proyecto y a su vez nos servirá como referencia para la verificación del desempeño de nuestro algoritmo.
 
-Usaremos este dataset como la fuente de imágenes para nuestro proyecto y a su vez nos servirá como referencia para la asignación del desempeño de nuestro algoritmo.
+\textit{RoCoLe} continene la información de 390 plantas de café robusta a las cuales se le tomaron 4 muestras de sus hojas haciendo un total de 1560 imágenes. Las muestras fueron tomadas en diferentes condiciones (iluminación, lado de la hoja) para proporcionar un conjunto más diverso de características.
+
+Cada hoja presenta dos clasificaciones: la primera respecto a su estado de salud, ya sea saludable o no-saludable, y la segunda respecto al nivel de afectación por roya en caso de ser una hoja no-saludable. La \Cref{table:rust_levels} presenta la ponderación utilizada para la clasificación de los niveles de afectación.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Nivel} & \textbf{Categoría} & \textbf{Descripción} & \textbf{Área afectada} \\
+\hline
+1 & rust\_level\_1 & Roya nivel 1 & 1 - 5 \% \\
+\hline 
+2 & rust\_level\_2 & Roya nivel 2 & 6 - 20 \% \\
+\hline 
+3 & rust\_level\_3 & Roya nivel 3 & 21 - 50 \% \\
+\hline 
+4 & rust\_level\_4 & Roya nivel 4 & $>$ 50 \% \\
+\hline 
+\end{tabular}
+\caption{Niveles de afectación por roya}
+\label{table:rust_levels}
+\end{table}

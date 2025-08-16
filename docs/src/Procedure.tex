@@ -211,7 +211,7 @@ En el \Cref{code:segmentation} hemos asignado al umbral inferior el valor de 30 
 \end{figure}
 
 \subsection{Clasificación de la hoja}
-Una vez segmentada la hoja de café en su parte saludable (pixeles blancos) e infectada (pixeles negros dentro de la máscara), procedemos a clasificarla utilizando la misma ponderación usada por los autores (REF Tabla).
+Una vez segmentada la hoja de café en su parte saludable (pixeles blancos) e infectada (pixeles negros dentro de la máscara), procedemos a clasificarla utilizando la misma ponderación usada por los autores (\Cref{table:rust_levels}).
 
 Para el cálculo del porcentaje afectado, simplemente calculamos el área saludable de la hoja a partir de la imagen segmentada (\Cref{img:segmentation}) y restamos este valor al área de la máscara (\Cref{code:mask}), como se describe en \Cref{code:categorize}.
 

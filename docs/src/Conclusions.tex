@@ -1,6 +1,43 @@
 \chapter{Conclusiones}
 En este capítulo se presenta el análisis de los resultados obtenidos, las limitaciones encontradas y algunas consideraciones y mejoras para trabajos futuros.
 
+\section{Conclusiones específicas}
+
+\subsection{Unicidad de la solución}
+El algoritmo no provee una solución general, es decir, dependiendo de la clasificación de las hojas que se desea buscar o analizar, debería elegirse umbrales de segmentación diferentes. La \Cref{table:recommended_segmentation} proporciona la mejor configuración encontrada para cada una de las categorías establecidas.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|c|}
+\hline 
+\textbf{Clasificación} & \textbf{Umbral de segmentación} & \textbf{Eficiencia \%}\\ 
+\hline 
+healthy & 25 - 120 & 71.175 \\ 
+\hline 
+rust\_level\_1 & 30 - 100 & 58.72 \\ 
+\hline 
+rust\_level\_2 & 30 - 80 & 44.578 \\ 
+\hline 
+rust\_level\_3 & 40 - 80 & 35.483 \\ 
+\hline 
+rust\_level\_4 & 40 - 80/120 & 40.00 \\ 
+\hline 
+\end{tabular}
+\caption{Umbrales de segmentación recomendados}
+\label{table:recommended_segmentation}
+\end{table}
+
+\subsection{Inconsistencias en el dataset}
+
+Parte de la ineficiencia del algoritmo se debe a que algunas anotaciones en el dataset fueron mal etiquetadas: no puede suceder que la categoría de una hoja sea marcada como saludable mientras que su estado sea no-saludable (\Cref{img:dataset_inconsistencies}). Se encontraron \textbf{4} inconsistencias en el dataset (descartando la categoría \textit{araña roja}).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/consideration_tag_error.png}
+\caption{Inconsistencias en el dataset}
+\label{img:dataset_inconsistencies}
+\end{figure}
+
 \section{Casos especiales}
 Existen algunos casos para los cuales el algoritmo no proporciona un rendimiento adecuado, los cuales se describen a continuación.
 
@@ -83,6 +120,8 @@ Actualmente el algoritmo se apoya en las anotaciones del dataset para la determi
 
 La \Cref{img:issue_countour_rgb} muestra el contorno asignado a una hoja saludable el cual no es preciso e introduce matices no deseados en el canal Hue (\Cref{img:issue_countour_hue}) provocando una segmentación incorrecta de la imagen (\Cref{img:issue_countour_binary}).
 
+Una mejora sugerida para resolver este problema es la creación de un algoritmo (o método) para la detección de objetos que permita aislar la región de interés de manera precisa mejorando el rendimiento global del algoritmo.
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=1]{images/consideration_contour_rgb.png}
@@ -104,16 +143,7 @@ La \Cref{img:issue_countour_rgb} muestra el contorno asignado a una hoja saludab
 \label{img:issue_countour_binary}
 \end{figure}
 
-Una mejora sugerida para resolver este problema es la creación de un algoritmo (o método) para la detección de objetos que permita aislar la región de interés de manera precisa mejorando el rendimiento global del algoritmo.
-
-\subsection{Optimización de los umbrales de segmentación}
-
-Los umbrales de segmentación sugeridos en la \Cref{table:recommended_segmentation} fueron calculados manualmente a través de un enfoque de prueba y error. Por lo tanto, pueden existir umbrales que mejoran el rendimiento del algoritmo.
-
-Una forma automatizada de encontrar umbrales más eficientes, o de verificar que no los hay, es mediante el uso de algoritmos genéticos. Este proceso identificaría la configuración más eficiente de los umbrales maximizando su nivel de eficiencia, o bien, reduciendo el margen de error.
-
 \subsection{Análisis en RGB}
-
 A pesar de que la segmentación por matices en el canal Hue es útil para la detección de zonas afectadas, no nos proporciona información acerca de la severidad en la zona, o si bien lo hace, tal información es fácil de confundirse con otras propiedades que generan matices similares (\Cref{img:issue_severity_hue}).
 
 Existen casos en que una hoja presenta un área mínima de afectación pero con una severidad muy alta (\Cref{img:issue_severity_rgb}) catalogándola automáticamente como severamente afectada. En otras palabras, el área afectada (\Cref{img:issue_severity_binary}) no es suficiente para la clasificación correcta de la hoja.
@@ -141,44 +171,10 @@ Una segmentación basada en colores \textsf{RGB} podría ser más eficaz e intui
 \label{img:issue_severity_binary}
 \end{figure}
 
-\section{Conclusiones específicas}
+\subsection{Optimización de los umbrales de segmentación}
+Los umbrales de segmentación sugeridos en la \Cref{table:recommended_segmentation} fueron calculados manualmente a través de un enfoque de prueba y error. Por lo tanto, pueden existir umbrales que mejoran el rendimiento del algoritmo.
 
-\subsection{Unicidad de la solución}
-El algoritmo no provee una solución general, es decir, dependiendo de la clasificación de las hojas que se desea buscar o analizar, debería elegirse umbrales de segmentación diferentes. La \Cref{table:recommended_segmentation} proporciona la mejor configuración encontrada para cada una de las categorías establecidas.
-
-\begin{table}[H]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline 
-\textbf{Clasificación} & \textbf{Umbral de segmentación} & \textbf{Eficiencia \%}\\ 
-\hline 
-healthy & 25 - 120 & 71.175 \\ 
-\hline 
-rust\_level\_1 & 30 - 100 & 58.72 \\ 
-\hline 
-rust\_level\_2 & 30 - 80 & 44.578 \\ 
-\hline 
-rust\_level\_3 & 40 - 80 & 35.483 \\ 
-\hline 
-rust\_level\_4 & 40 - 80/120 & 40.00 \\ 
-\hline 
-\end{tabular}
-\caption{Umbrales de segmentación recomendados}
-\label{table:recommended_segmentation}
-\end{table}
-
-\subsection{Inconsistencias en el dataset}
-
-Parte de la ineficiencia del algoritmo se debe a que algunas anotaciones en el dataset fueron mal etiquetadas:
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{images/consideration_tag_error.png}
-\caption{Inconsistencias en el dataset}
-\label{img:dataset_inconsistencies}
-\end{figure}
-
-No puede suceder que la clasificación de una hoja sea marcada como saludable mientras que su estado sea no-saludable (\Cref{img:dataset_inconsistencies}). Se encontraron \textbf{4} inconsistencias en el dataset (descartando la categoría \textit{araña roja}).
+Una forma automatizada de encontrar umbrales más eficientes, o de verificar que no los hay, es mediante el uso de algoritmos genéticos. Este proceso identificaría la configuración más eficiente de los umbrales maximizando su nivel de eficiencia, o bien, reduciendo el margen de error.
 
 \section{Conclusiones generales}
 Un procesamiento digital de imágenes tradicional generalmente es más eficiente cuando el campo u objeto de estudio es reducido y está normalizado, es decir, no hay mucha variabilidad en las condiciones que describen al sistema.

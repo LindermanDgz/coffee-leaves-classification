@@ -193,7 +193,14 @@ Una vez que tenemos la región de interés en el canal Hue, procedemos a calcula
 
 \subsection{Segmentación de la imagen}
 \label{sec:segmentation}
-Del histograma nos interesa la región de la hoja que se considera saludable, es decir, la región del espectro Hue en matices verdes, un poco del amarillo-naranja (umbral inferior) y hasta la región azul (umbral superior) para cuando las hojas tengan un verde intenso acercándose a tonos azules.
+Del histograma nos interesa la región de la hoja que se considera saludable (\Cref{img:histogram_healthy}), es decir, la región del espectro Hue en matices verdes, un poco del amarillo-naranja (umbral inferior) y hasta la región azul (umbral superior) para cuando las hojas tengan un verde intenso acercándose a tonos azules.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{images/histogram_healthy.png}
+\caption{Histograma de una hoja sana}
+\label{img:histogram_healthy}
+\end{figure}
 
 En el \Cref{code:segmentation} hemos asignado al umbral inferior el valor de 30 y al umbral superior el valor de 120. Segmentamos cada parte de los umbrales y el resultado lo unimos usando una operación \texttt{AND} elemento por elemento, resultando en la imagen segmentada apropiadamente (\Cref{img:segmentation}).
 

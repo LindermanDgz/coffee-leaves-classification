@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Coffee Leaves Classification"
+authors:
+  - family-names: "Dominguez-Ordonez"
+    given-names: "Linderman Emmanuel"
+repository-code: "https://github.com/LindermanDgz/coffee-leaves-classification"
+license: "CC-BY-4.0"
+date-released: "2025-08-15"
+version: "1.0.0"

@@ -1,5 +1,47 @@
 \chapter{Resultados}
-En el capítulo anterior describimos el proceso para segmentar las imágenes a través del canal Hue. Empleando diferentes valores para los parámetros de umbral inferior y umbral superior (\Cref{sec:segmentation}) se obtienen los siguientes resultados.
+En el capítulo anterior describimos el proceso para segmentar las imágenes a través del canal Hue. A continuación se presenta una serie de resultados utilizando múltiples valores para los umbrales inferior y superior de la región sana de la hoja, con la finalidad de encontrar la configuración más adecuada que nos permita alcanzar la misma clasificación hecha manualmente por los recolectores humanos.
+
+Recordar que la ponderación para los diferentes niveles de afectación es la siguiente:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\textbf{Nivel} & \textbf{Categoría} & \textbf{Descripción} & \textbf{Área afectada} \\
+\hline
+1 & rust\_level\_1 & Roya nivel 1 & 1 - 5 \% \\
+\hline 
+2 & rust\_level\_2 & Roya nivel 2 & 6 - 20 \% \\
+\hline 
+3 & rust\_level\_3 & Roya nivel 3 & 21 - 50 \% \\
+\hline 
+4 & rust\_level\_4 & Roya nivel 4 & $>$ 50 \% \\
+\hline 
+\end{tabular}
+\end{center}
+
+En cada uno de los resultados se provee la siguiente información:
+
+\begin{enumerate}
+\item Una tabla con las eficiencias generales de la configuración.
+
+Esta tabla muestra las estadísticas de las dos clasificaciones de las hojas. La clasificación de su estado (saludable o infectada), la cual descarta el nivel de afectación presente, y la clasificación por categoría o nivel de afectación. Para esta última, la tabla sólo muestra el número de aciertos obtenidos sin realizar una estadística por cada categoría. Un acierto ocurre cuando la clasificación calculada por el algoritmo es la misma que la asignada manualmente por los recolectores de las muestras.
+
+\item Una gráfica circular con la eficiencia detectando el estado de salud de las hojas.
+
+Esta gráfica muestra la eficiencia del algoritmo clasificando el estado de las hojas y corresponde a la primera fila de la tabla de eficiencias generales.
+
+\item Una gráfica circular con la eficiencia detectando la categoría o nivel de afectación de las hojas.
+
+Esta gráfica muestra la eficiencia del algoritmo clasificando el nivel de afectación de las hojas y corresponde a la segunda fila de la tabla de eficiencias generales.
+
+\item Una tabla con la eficiencia detectando cada categoría o nivel de afectación.
+
+Esta tabla muestra la eficiencia del algoritmo detectando cada una de las categorías o niveles de afectación. Cabe mencionar que una hoja saludable (healthy) tiene una categoría también saludable (healthy).
+
+\item Una gráfica de barras con la eficiencia detectando cada categoría o nivel de afectación.
+
+Esta gráfica es una representación visual de la tabla con las eficiencias por cada categoría o nivel de afectación.
+\end{enumerate}
 
 \section{Segmentación Hue en 40 y 120}
 \input{results/result_40_120}

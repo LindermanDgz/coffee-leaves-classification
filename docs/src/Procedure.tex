@@ -180,7 +180,7 @@ Una vez que tenemos la región de interés en el canal Hue, procedemos a calcula
 
 \begin{listing}[H]
 \inputminted{python}{code_listings/histogram.py}
-\caption{Cálcular histograma de la región de interés}
+\caption{Calcular histograma de la región de interés}
 \label{code:histogram}
 \end{listing}
 
@@ -195,7 +195,7 @@ Una vez que tenemos la región de interés en el canal Hue, procedemos a calcula
 \label{sec:segmentation}
 Del histograma nos interesa la región de la hoja que se considera saludable, es decir, la región del espectro Hue en matices verdes, un poco del amarillo-naranja (umbral inferior) y hasta la región azul (umbral superior) para cuando las hojas tengan un verde intenso acercándose a tonos azules.
 
-En el \Cref{code:segmentation} hemos asignado al umbral inferior el valor de 30 y al umbral superior el valor de 120. Segmentamos cada parte de los umbrales y el resultado los unimos usando una operación \texttt{AND} elemento por elemento, resultando en la imagen segmentada apropiadamente (\Cref{img:segmentation}).
+En el \Cref{code:segmentation} hemos asignado al umbral inferior el valor de 30 y al umbral superior el valor de 120. Segmentamos cada parte de los umbrales y el resultado lo unimos usando una operación \texttt{AND} elemento por elemento, resultando en la imagen segmentada apropiadamente (\Cref{img:segmentation}).
 
 \begin{listing}[H]
 \inputminted{python}{code_listings/segmentation.py}

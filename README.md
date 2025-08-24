@@ -1,5 +1,10 @@
 # coffee-leaves-classification
-Digital Image Processing project to classify healthy/unhealthy coffe leaves from RoCoLe dataset
+
+![](./docs/src/images/coffee_beans.png)
+
+A Digital Image Processing project to detect coffee leaves infected by rust and their level of affectation. The state of the coffee leaves is classified as *healthy* or *unhealthy*, and a category is given for the latter: *rust_level_1*, *rust_level_2*, *rust_level_3* or *rust_level_4*. The algorithm implements color segmentation leveraging on the Hue channel from the [HSV color space](https://en.wikipedia.org/wiki/HSL_and_HSV).
+
+This project is based on the work made by [Jorge Parraga-Alava](mailto:jorge.parraga@usach.cl), Kevin Cusme, Angélica Loor and Esneider Santander, published in [RoCoLe: A robusta coffee leaf images dataset for evaluation of machine learning based methods in plant diseases recognition](https://doi.org/10.1016/j.dib.2019.104414), publicly available under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
 ## Installation
 
